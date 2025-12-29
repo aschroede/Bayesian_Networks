@@ -1,0 +1,44 @@
+network unknown {
+}
+variable Alarm {
+    type discrete [ 2 ] { 0, 1 };
+}
+variable Fire {
+    type discrete [ 2 ] { 0, 1 };
+}
+variable Leaving {
+    type discrete [ 2 ] { 0, 1 };
+}
+variable Report {
+    type discrete [ 2 ] { 0, 1 };
+}
+variable Smoke {
+    type discrete [ 2 ] { 0, 1 };
+}
+variable Tampering {
+    type discrete [ 2 ] { 0, 1 };
+}
+probability ( Alarm | Tampering, Fire ) {
+    (0, 0) 0.9999, 0.0001;
+    (1, 0) 0.15, 0.85;
+    (0, 1) 0.01, 0.99;
+    (1, 1) 0.5, 0.5;
+}
+probability ( Fire ) {
+    table 0.99, 0.01 ;
+}
+probability ( Leaving | Alarm ) {
+    (0) 0.999, 0.001;
+    (1) 0.12, 0.88;
+}
+probability ( Report | Leaving ) {
+    (0) 0.99, 0.01;
+    (1) 0.25, 0.75;
+}
+probability ( Smoke | Fire ) {
+    (0) 0.99, 0.01;
+    (1) 0.1, 0.9;
+}
+probability ( Tampering ) {
+    table 0.98, 0.02 ;
+}

@@ -1,0 +1,504 @@
+
+------- NEW VE RUN STARTED -------
+
+Date: 2024-09-07 14:49:49.053212
+
+Elimination order heuristic used: Least incoming arcs first
+
+Elimination Order: ['Earthquake', 'JohnCalls', 'MaryCalls']
+
+Query Variables: Alarm
+
+Observed Variables: {'Burglary': 'True'}
+
+Original Factors: 
+
+	  Burglary  prob
+	0     True  0.01
+	1    False  0.99
+
+	  Earthquake  prob
+	0       True  0.02
+	1      False  0.98
+
+	   Alarm Burglary Earthquake   prob
+	0   True     True       True  0.950
+	1  False     True       True  0.050
+	2   True    False       True  0.290
+	3  False    False       True  0.710
+	4   True     True      False  0.940
+	5  False     True      False  0.060
+	6   True    False      False  0.001
+	7  False    False      False  0.999
+
+	  JohnCalls  Alarm  prob
+	0      True   True  0.90
+	1     False   True  0.10
+	2      True  False  0.05
+	3     False  False  0.95
+
+	  MaryCalls  Alarm  prob
+	0      True   True  0.70
+	1     False   True  0.30
+	2      True  False  0.01
+	3     False  False  0.99
+
+Factors with evidence applied: 
+
+	  Earthquake  prob
+	0       True  0.02
+	1      False  0.98
+
+	   Alarm Earthquake  prob
+	0   True       True  0.95
+	1  False       True  0.05
+	4   True      False  0.94
+	5  False      False  0.06
+
+	  JohnCalls  Alarm  prob
+	0      True   True  0.90
+	1     False   True  0.10
+	2      True  False  0.05
+	3     False  False  0.95
+
+	  MaryCalls  Alarm  prob
+	0      True   True  0.70
+	1     False   True  0.30
+	2      True  False  0.01
+	3     False  False  0.99
+
+Eliminate variable: Earthquake
+
+Factors to multiply containing variable: Earthquake
+
+	  Earthquake  prob
+	0       True  0.02
+	1      False  0.98
+
+	   Alarm Earthquake  prob
+	0   True       True  0.95
+	1  False       True  0.05
+	4   True      False  0.94
+	5  False      False  0.06
+
+Result of multiplication: 
+
+	  Earthquake  Alarm    prob
+	0       True   True  0.0190
+	1       True  False  0.0010
+	2      False   True  0.9212
+	3      False  False  0.0588
+
+Sum out Earthquake
+
+	   Alarm    prob
+	0  False  0.0598
+	1   True  0.9402
+
+New List of Factors: 
+
+	  JohnCalls  Alarm  prob
+	0      True   True  0.90
+	1     False   True  0.10
+	2      True  False  0.05
+	3     False  False  0.95
+
+	  MaryCalls  Alarm  prob
+	0      True   True  0.70
+	1     False   True  0.30
+	2      True  False  0.01
+	3     False  False  0.99
+
+	   Alarm    prob
+	0  False  0.0598
+	1   True  0.9402
+
+Eliminate variable: JohnCalls
+
+Factors to multiply containing variable: JohnCalls
+
+	  JohnCalls  Alarm  prob
+	0      True   True  0.90
+	1     False   True  0.10
+	2      True  False  0.05
+	3     False  False  0.95
+
+Result of multiplication: 
+
+	  JohnCalls  Alarm  prob
+	0      True   True  0.90
+	1     False   True  0.10
+	2      True  False  0.05
+	3     False  False  0.95
+
+Sum out JohnCalls
+
+	   Alarm  prob
+	0  False   1.0
+	1   True   1.0
+
+New List of Factors: 
+
+	  MaryCalls  Alarm  prob
+	0      True   True  0.70
+	1     False   True  0.30
+	2      True  False  0.01
+	3     False  False  0.99
+
+	   Alarm    prob
+	0  False  0.0598
+	1   True  0.9402
+
+	   Alarm  prob
+	0  False   1.0
+	1   True   1.0
+
+Eliminate variable: MaryCalls
+
+Factors to multiply containing variable: MaryCalls
+
+	  MaryCalls  Alarm  prob
+	0      True   True  0.70
+	1     False   True  0.30
+	2      True  False  0.01
+	3     False  False  0.99
+
+Result of multiplication: 
+
+	  MaryCalls  Alarm  prob
+	0      True   True  0.70
+	1     False   True  0.30
+	2      True  False  0.01
+	3     False  False  0.99
+
+Sum out MaryCalls
+
+	   Alarm  prob
+	0  False   1.0
+	1   True   1.0
+
+New List of Factors: 
+
+	   Alarm    prob
+	0  False  0.0598
+	1   True  0.9402
+
+	   Alarm  prob
+	0  False   1.0
+	1   True   1.0
+
+	   Alarm  prob
+	0  False   1.0
+	1   True   1.0
+
+Elimination step complete. Multiply the following remaining factors together.
+
+	   Alarm    prob
+	0  False  0.0598
+	1   True  0.9402
+
+	   Alarm  prob
+	0  False   1.0
+	1   True   1.0
+
+	   Alarm  prob
+	0  False   1.0
+	1   True   1.0
+
+Final factor pre-normalization.
+
+	   Alarm    prob
+	0  False  0.0598
+	1   True  0.9402
+
+Final factor post-normalization.
+
+	   Alarm    prob
+	0  False  0.0598
+	1   True  0.9402
+
+------- NEW VE RUN STARTED -------
+
+Date: 2024-09-07 14:50:04.989487
+
+Elimination order heuristic used: Contained in fewest factors first
+
+Elimination Order: ['Alarm', 'Leaving', 'Fire']
+
+Query Variables: Tampering
+
+Observed Variables: {'Smoke': '1', 'Report': '1'}
+
+Original Factors: 
+
+	  Alarm Tampering Fire    prob
+	0     0         0    0  0.9999
+	1     1         0    0  0.0001
+	2     0         1    0  0.1500
+	3     1         1    0  0.8500
+	4     0         0    1  0.0100
+	5     1         0    1  0.9900
+	6     0         1    1  0.5000
+	7     1         1    1  0.5000
+
+	  Fire  prob
+	0    0  0.99
+	1    1  0.01
+
+	  Leaving Alarm   prob
+	0       0     0  0.999
+	1       1     0  0.001
+	2       0     1  0.120
+	3       1     1  0.880
+
+	  Report Leaving  prob
+	0      0       0  0.99
+	1      1       0  0.01
+	2      0       1  0.25
+	3      1       1  0.75
+
+	  Smoke Fire  prob
+	0     0    0  0.99
+	1     1    0  0.01
+	2     0    1  0.10
+	3     1    1  0.90
+
+	  Tampering  prob
+	0         0  0.98
+	1         1  0.02
+
+Factors with evidence applied: 
+
+	  Alarm Tampering Fire    prob
+	0     0         0    0  0.9999
+	1     1         0    0  0.0001
+	2     0         1    0  0.1500
+	3     1         1    0  0.8500
+	4     0         0    1  0.0100
+	5     1         0    1  0.9900
+	6     0         1    1  0.5000
+	7     1         1    1  0.5000
+
+	  Fire  prob
+	0    0  0.99
+	1    1  0.01
+
+	  Leaving Alarm   prob
+	0       0     0  0.999
+	1       1     0  0.001
+	2       0     1  0.120
+	3       1     1  0.880
+
+	  Leaving  prob
+	1       0  0.01
+	3       1  0.75
+
+	  Fire  prob
+	1    0  0.01
+	3    1  0.90
+
+	  Tampering  prob
+	0         0  0.98
+	1         1  0.02
+
+Eliminate variable: Alarm
+
+Factors to multiply containing variable: Alarm
+
+	  Alarm Tampering Fire    prob
+	0     0         0    0  0.9999
+	1     1         0    0  0.0001
+	2     0         1    0  0.1500
+	3     1         1    0  0.8500
+	4     0         0    1  0.0100
+	5     1         0    1  0.9900
+	6     0         1    1  0.5000
+	7     1         1    1  0.5000
+
+	  Leaving Alarm   prob
+	0       0     0  0.999
+	1       1     0  0.001
+	2       0     1  0.120
+	3       1     1  0.880
+
+Result of multiplication: 
+
+	   Fire Tampering Alarm Leaving      prob
+	0     0         0     0       0  0.998900
+	1     0         0     0       1  0.001000
+	2     0         1     0       0  0.149850
+	3     0         1     0       1  0.000150
+	4     1         0     0       0  0.009990
+	5     1         0     0       1  0.000010
+	6     1         1     0       0  0.499500
+	7     1         1     0       1  0.000500
+	8     0         0     1       0  0.000012
+	9     0         0     1       1  0.000088
+	10    0         1     1       0  0.102000
+	11    0         1     1       1  0.748000
+	12    1         0     1       0  0.118800
+	13    1         0     1       1  0.871200
+	14    1         1     1       0  0.060000
+	15    1         1     1       1  0.440000
+
+Sum out Alarm
+
+	  Fire Tampering Leaving      prob
+	0    0         0       0  0.998912
+	1    0         0       1  0.001088
+	2    0         1       0  0.251850
+	3    0         1       1  0.748150
+	4    1         0       0  0.128790
+	5    1         0       1  0.871210
+	6    1         1       0  0.559500
+	7    1         1       1  0.440500
+
+New List of Factors: 
+
+	  Fire  prob
+	0    0  0.99
+	1    1  0.01
+
+	  Leaving  prob
+	1       0  0.01
+	3       1  0.75
+
+	  Fire  prob
+	1    0  0.01
+	3    1  0.90
+
+	  Tampering  prob
+	0         0  0.98
+	1         1  0.02
+
+	  Fire Tampering Leaving      prob
+	0    0         0       0  0.998912
+	1    0         0       1  0.001088
+	2    0         1       0  0.251850
+	3    0         1       1  0.748150
+	4    1         0       0  0.128790
+	5    1         0       1  0.871210
+	6    1         1       0  0.559500
+	7    1         1       1  0.440500
+
+Eliminate variable: Leaving
+
+Factors to multiply containing variable: Leaving
+
+	  Leaving  prob
+	1       0  0.01
+	3       1  0.75
+
+	  Fire Tampering Leaving      prob
+	0    0         0       0  0.998912
+	1    0         0       1  0.001088
+	2    0         1       0  0.251850
+	3    0         1       1  0.748150
+	4    1         0       0  0.128790
+	5    1         0       1  0.871210
+	6    1         1       0  0.559500
+	7    1         1       1  0.440500
+
+Result of multiplication: 
+
+	  Fire Tampering Leaving      prob
+	0    0         0       0  0.009989
+	1    0         1       0  0.002518
+	2    1         0       0  0.001288
+	3    1         1       0  0.005595
+	4    0         0       1  0.000816
+	5    0         1       1  0.561113
+	6    1         0       1  0.653407
+	7    1         1       1  0.330375
+
+Sum out Leaving
+
+	  Fire Tampering      prob
+	0    0         0  0.010805
+	1    0         1  0.563631
+	2    1         0  0.654695
+	3    1         1  0.335970
+
+New List of Factors: 
+
+	  Fire  prob
+	0    0  0.99
+	1    1  0.01
+
+	  Fire  prob
+	1    0  0.01
+	3    1  0.90
+
+	  Tampering  prob
+	0         0  0.98
+	1         1  0.02
+
+	  Fire Tampering      prob
+	0    0         0  0.010805
+	1    0         1  0.563631
+	2    1         0  0.654695
+	3    1         1  0.335970
+
+Eliminate variable: Fire
+
+Factors to multiply containing variable: Fire
+
+	  Fire  prob
+	0    0  0.99
+	1    1  0.01
+
+	  Fire  prob
+	1    0  0.01
+	3    1  0.90
+
+	  Fire Tampering      prob
+	0    0         0  0.010805
+	1    0         1  0.563631
+	2    1         0  0.654695
+	3    1         1  0.335970
+
+Result of multiplication: 
+
+	  Fire Tampering      prob
+	0    0         0  0.000107
+	1    0         1  0.005580
+	2    1         0  0.005892
+	3    1         1  0.003024
+
+Sum out Fire
+
+	  Tampering      prob
+	0         0  0.005999
+	1         1  0.008604
+
+New List of Factors: 
+
+	  Tampering  prob
+	0         0  0.98
+	1         1  0.02
+
+	  Tampering      prob
+	0         0  0.005999
+	1         1  0.008604
+
+Elimination step complete. Multiply the following remaining factors together.
+
+	  Tampering  prob
+	0         0  0.98
+	1         1  0.02
+
+	  Tampering      prob
+	0         0  0.005999
+	1         1  0.008604
+
+Final factor pre-normalization.
+
+	  Tampering      prob
+	0         0  0.005879
+	1         1  0.000172
+
+Final factor post-normalization.
+
+	  Tampering      prob
+	0         0  0.971564
+	1         1  0.028436
