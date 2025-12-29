@@ -1,0 +1,5 @@
+1. Got basic MAP working
+2. Need to write unit tests to verify output is correct
+3. Need to test with different networks
+4. Need to add more logging
+5. Remove duplicate code that is the same as variable elimination code.

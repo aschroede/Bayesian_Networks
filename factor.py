@@ -22,6 +22,23 @@ class Factor:
         # Remove variable that has been reduced
         self.dataframe.drop(variable, axis=1, inplace=True)
 
+    def maximize(self, variable):
+        """
+        Maximises out a variable from the factor. Used for MAP operation.
+
+        :param self: Description
+        :param variable: Variable to maximise out of the factor.
+        """
+
+        all_columns = self.dataframe.columns[:-1]
+
+        columns_to_keep = [col for col in all_columns if col != variable]
+
+        new_factor = self.dataframe.groupby(columns_to_keep)["prob"].max().reset_index()
+
+        self.dataframe = new_factor
+
+
     def marginalize(self, variable):
         """
         Sums-out a variable from this factor
@@ -45,7 +62,7 @@ class Factor:
 
     def multiply(self, factor2: "Factor", variable):
         """
-        Multiplies this factor with another provided factor, merging on the two factors on a common variable
+        Multiplies this factor with another provided factor, merging the two factors on a common variable
         Args:
             factor2: factor to multiply this with
             variable: variable to merge the two factors on
@@ -87,3 +104,6 @@ class Factor:
 
     def __str__(self) -> str:
         return str(self.get_vars())
+
+    def copy(self):
+        return Factor(self.dataframe.copy(deep=True))
