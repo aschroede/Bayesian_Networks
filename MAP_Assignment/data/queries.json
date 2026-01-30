@@ -1,0 +1,55 @@
+{
+    "networks":[
+        {
+            "name": "alarm",
+            "file": "alarm.bif",
+            "queries":[
+                {
+                    "name":"q1",
+                    "map_vars": ["Tampering", "Report"],
+                    "evidence": {
+                        "Smoke": "1"
+                    }
+                },
+                {
+                    "name":"q2_noEvidence",
+                    "map_vars": ["Tampering", "Report"],
+                    "evidence": {}
+                },
+                {
+                    "name":"q3",
+                    "map_vars": ["Tampering", "Report"],
+                    "evidence": {
+                        "Smoke": "0"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "earthquake",
+            "file": "earthquake.bif",
+            "queries":[
+                {
+                    "name":"q1",
+                    "map_vars": ["Alarm"],
+                    "evidence": {
+                        "Burglary": "True"
+                    }
+                },
+                {
+                    "name":"q2",
+                    "map_vars": ["Alarm", "JohnCalls", "MaryCalls"],
+                    "evidence": {
+                        "Burglary": "False",
+                        "Earthquake": "True"
+                    }
+                },
+                {
+                    "name":"q3",
+                    "map_vars": ["Alarm", "MaryCalls"],
+                    "evidence": {}
+                }
+            ]
+        }
+    ]
+}

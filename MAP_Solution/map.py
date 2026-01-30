@@ -86,10 +86,6 @@ class MAP():
             logger.debug("Result of multiplication: ")
             self.log_factor(result)
 
-            # Only makes sense to marginalize and maximise if the factor has
-            # at least two variables. TODO: This is not the correct way...
-            #if len(result.dataframe.columns) > 2:
-
             # If non-map variable then marginalize out
             if var_to_eliminate not in map_vars:
                 # Marginalize out the variable to be eliminated
