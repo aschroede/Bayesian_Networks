@@ -48,19 +48,6 @@
                     "name":"q3",
                     "map_vars": ["Alarm", "JohnCalls", "MaryCalls"],
                     "evidence": {}
-                },
-                {
-                    "name":"q4",
-                    "map_vars": [],
-                    "evidence": {
-                        "Burglary": "False",
-                        "Earthquake": "True"
-                    }
-                },
-                {
-                    "name":"q5",
-                    "map_vars": [],
-                    "evidence": {}
                 }
             ]
         }

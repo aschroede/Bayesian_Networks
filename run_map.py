@@ -55,20 +55,21 @@ def main():
 
         # Select Heuristic
         heuristic_selection = int(input(f"Select elimination order heuristic:\n"
-                                        f"1) {least_incoming}\n"
-                                        f"2) {fewest_factors}\n"))
+                                        f"1) Mininum Parents\n"
+                                        f"2) Minimum Factors\n"))
 
-
+        if heuristic_selection == 1:
+            elim_order = "min_parents"
+        else:
+            elim_order = "min_factors"
 
         # Log Information
         logger.info("------- NEW MAP RUN STARTED -------")
         logger.info("Date: " + str(datetime.now()))
-        logger.info("Elimination order heuristic used: " + elim_type)
-        logger.info("Non-MAP Elimination Order: " + str(non_map_elim_order))
-        logger.info("MAP Elimination Order: " + str(map_elim_order))
+        logger.info("Elimination order heuristic used: " + elim_order)
 
         # Run VE
-        map_result = map.run(map_vars, evidence, combined_elim_order)
+        map_result = map.run(map_vars, evidence, elim_order)
         print(f"Map Result: {map_result}")
         print("\nVerbose log output saved to " + logger.handlers[0].baseFilename)
 

@@ -26,14 +26,13 @@ class MAP():
         distribution of the query variable given the observed variables
 
         Input:
-            query:      The query variable
-            observed:   A dictionary of the observed variables {variable: value}
-            elim_order: Either a list specifying the elimination ordering
-                        or a function that will determine an elimination ordering
-                        given the network during the run
+            map_vars:       The map variables to be queried
+            observed:       A dictionary of the observed variables {variable: value}
+            elim_heuristic: String to specify which elimination order heuristic to use.
+                            That that the tests in test_map.py pass none so you should implement a default elim order
+                            heuristic if none is provided.
 
-        Output: A variable holding the probability distribution
-                for the query variable
+        Output: A dictionary representing the most probable assignment to the map variables {variable: value}
 
         """
 
@@ -178,6 +177,7 @@ class MAP():
         elim_order = non_map_var_order + map_var_order
         return elim_order
 
+    # Logging functions
     def log_factors(self, factors):
         for factor in factors:
             logger.debug('\t' + factor.get_data_frame().to_string().replace('\n', '\n\t'))

@@ -18,28 +18,28 @@
       "Alarm": "True"
     },
     "q2": {
+      "JohnCalls": "False",
       "MaryCalls": "False",
-      "Alarm": "False",
-      "JohnCalls": "False"
+      "Alarm": "False"
     },
     "q3": {
+      "JohnCalls": "False",
       "MaryCalls": "False",
-      "Alarm": "False",
-      "JohnCalls": "False"
+      "Alarm": "False"
     },
     "q4": {
       "MaryCalls": "False",
-      "Burglary": "False",
-      "JohnCalls": "False",
       "Alarm": "False",
-      "Earthquake": "False"
+      "Earthquake": "False",
+      "Burglary": "False",
+      "JohnCalls": "False"
     },
     "q5": {
       "MaryCalls": "False",
-      "Burglary": "False",
-      "JohnCalls": "False",
       "Alarm": "False",
-      "Earthquake": "False"
+      "Earthquake": "False",
+      "Burglary": "False",
+      "JohnCalls": "False"
     }
   }
 }
