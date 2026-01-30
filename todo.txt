@@ -1,5 +1,8 @@
-1. Got basic MAP working
+1. Get basic MAP working X
 2. Need to write unit tests to verify output is correct
 3. Need to test with different networks
-4. Need to add more logging
-5. Remove duplicate code that is the same as variable elimination code.
+4. Need to add more logging X
+5. Remove duplicate code that is the same as variable elimination code. X
+6. Defien map function contract
+7. Define nice way of passing heuristic argument to map function so it doesn't affect tests
+8. Find a way to hide tests from students but they can still run them...

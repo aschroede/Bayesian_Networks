@@ -1,0 +1,45 @@
+{
+  "alarm": {
+    "q1": {
+      "Report": "0",
+      "Tampering": "0"
+    },
+    "q2_noEvidence": {
+      "Report": "0",
+      "Tampering": "0"
+    },
+    "q3": {
+      "Report": "0",
+      "Tampering": "0"
+    }
+  },
+  "earthquake": {
+    "q1": {
+      "Alarm": "True"
+    },
+    "q2": {
+      "MaryCalls": "False",
+      "Alarm": "False",
+      "JohnCalls": "False"
+    },
+    "q3": {
+      "MaryCalls": "False",
+      "Alarm": "False",
+      "JohnCalls": "False"
+    },
+    "q4": {
+      "MaryCalls": "False",
+      "Burglary": "False",
+      "JohnCalls": "False",
+      "Alarm": "False",
+      "Earthquake": "False"
+    },
+    "q5": {
+      "MaryCalls": "False",
+      "Burglary": "False",
+      "JohnCalls": "False",
+      "Alarm": "False",
+      "Earthquake": "False"
+    }
+  }
+}

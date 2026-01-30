@@ -48,6 +48,7 @@ class Factor:
         # Extract all variable columns (don't select last column which is probability column)
         all_columns = self.dataframe.columns[:-1]
 
+        # TODO: This causes problems when the factor only contains the variable to be marginalized out
         # Get all columns except for the column to be marginalized out
         columns_to_keep = [col for col in all_columns if col != variable]
 

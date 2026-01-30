@@ -2,25 +2,25 @@ from read_bayesnet import BayesNet
 import operator
 
 
-def min_parents(net: BayesNet) -> list:
-    """
-    Orders nodes in a bayesian network in ascending order of number of parents (least-incoming-arcs-first).
-    Args:
-        net: Bayesian network to find the elimination order for.
+#def min_parents(net: BayesNet) -> list:
+    #"""
+    #Orders nodes in a bayesian network in ascending order of number of parents (least-incoming-arcs-first).
+    #Args:
+        #net: Bayesian network to find the elimination order for.
 
-    Returns: a list of nodes in ascending order of number of parents
+    #Returns: a list of nodes in ascending order of number of parents
 
-    """
-    # Parents contains a dictionary of var: var parents
-    parents = net.parents
+    #"""
+    ## Parents contains a dictionary of var: var parents
+    #parents = net.parents
 
-    # Sort each item in dictionary by number of parents
-    sorted_dict = sorted(parents.items(), key=operator.itemgetter(1))
+    ## Sort each item in dictionary by number of parents
+    #sorted_dict = sorted(parents.items(), key=operator.itemgetter(1))
 
-    # Collect just the variable name from the sorted dictionary
-    sorted_variables = [item[0] for item in sorted_dict]
+    ## Collect just the variable name from the sorted dictionary
+    #sorted_variables = [item[0] for item in sorted_dict]
 
-    return sorted_variables
+    #return sorted_variables
 
 def min_parents(net: BayesNet) -> list:
     """

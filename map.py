@@ -7,6 +7,7 @@ Class for the implementation of the variable elimination algorithm.
 from factor import Factor
 from read_bayesnet import BayesNet
 from logger import logger
+from elim_order_heuristics import *
 
 
 class MAP():
@@ -19,7 +20,7 @@ class MAP():
         """
         self.network = network
 
-    def run(self, observed: dict, elim_order, map_vars):
+    def run(self, map_vars:list, observed: dict, elim_heuristic=None):
         """
         Use the variable elimination algorithm to find out the probability
         distribution of the query variable given the observed variables
@@ -35,7 +36,8 @@ class MAP():
                 for the query variable
 
         """
-        # Somehow get data into factors that support reduction, maximisation, and marginalization
+
+        elim_order = self.get_map_elim_order(map_vars, observed, elim_heuristic)
 
         logger.info("Elimination Order: " + str(elim_order))
         logger.info("MAP Variables: "+ str(map_vars))
@@ -85,6 +87,10 @@ class MAP():
             logger.debug("Result of multiplication: ")
             self.log_factor(result)
 
+            # Only makes sense to marginalize and maximise if the factor has
+            # at least two variables. TODO: This is not the correct way...
+            #if len(result.dataframe.columns) > 2:
+
             # If non-map variable then marginalize out
             if var_to_eliminate not in map_vars:
                 # Marginalize out the variable to be eliminated
@@ -113,28 +119,24 @@ class MAP():
             logger.debug("New List of Factors: ")
             self.log_factors(factors)
 
-        # logger.debug("Elimination step complete. Multiply the following remaining factors together.")
-        # if len(factors) > 1:
-        #     self.log_factors(factors)
-        # else:
-        #     self.log_factor(factors[0])
+        logger.debug("Finished marginalizing/maximising variables. Start backtracking to find variable instantiations.")
+        map_assignment = self.get_map_instantiation(backtrack_factors)
 
-        # # Multiply remaining factors
-        # result = factors[0]
-        # if len(factors) > 1:
-        #     for factor in factors[1:]:
-        #         result.multiply(factor, query)
-        # logger.debug("Final factor pre-normalization.")
+        return map_assignment
 
+    def get_map_instantiation(self, backtrack_factors):
         map_assignment = {}
         while len(backtrack_factors) > 0:
             # Pop the latest factor and find its maximising instantiation
             factor = backtrack_factors.pop()
+            logger.debug("Popped this factor from the backtracking stack:")
+            self.log_factor(factor)
 
             df = factor.dataframe
             vars_in_factor = df.columns[:-1].tolist()
 
             var_to_assign = [v for v in vars_in_factor if v not in map_assignment][0]
+            logger.debug(f"Finding MAP instantiation for {var_to_assign}")
 
             # Check consistency of row with previously assigned values
             for var, value in map_assignment.items():
@@ -143,12 +145,38 @@ class MAP():
                     df = df[df[var]==value]
 
             # Find row with maixmum probability
-            max_row = df.loc[df["prob"].values.argmax()]
+            max_row = df.loc[df["prob"].idxmax()]
 
             map_assignment[var_to_assign] = max_row[var_to_assign]
+            logger.debug(f"MAP assignment for variable {var_to_assign} is {max_row[var_to_assign]}")
 
+        logger.debug("Final Map Instantiation:")
 
+        for key, value in map_assignment.items():
+            logger.debug(f"{key}->{value}")
         return map_assignment
+
+    def get_map_elim_order(self, map_vars, observed, elim_order):
+
+
+        if elim_order == "min_parents":
+            order = min_parents(self.network)
+        else:
+            order = min_factors(self.network)
+
+
+        non_map_vars = self.network.nodes.copy()
+        # remove map vars
+        for var in map_vars:
+            non_map_vars.remove(var)
+        # remove evidence vars
+        for var in observed.keys():
+            non_map_vars.remove(var)
+
+        non_map_var_order = [var for var in order if var in non_map_vars]
+        map_var_order = [var for var in order if var in map_vars]
+        elim_order = non_map_var_order + map_var_order
+        return elim_order
 
     def log_factors(self, factors):
         for factor in factors:
